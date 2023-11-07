@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweets.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/all-tweets.css" type="text/css" />
     
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -39,7 +40,7 @@
         <i class="fas fa-angle-double-down"></i>
       </div>
     </nav>
-    <header>
+    <header class="page-header">
       <div class="avatar">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -58,6 +59,28 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <section class="all-tweets">
+        <article>
+          <header class="tweet-header">
+            <div>
+              <span>Profile Picture</span>
+              <span>Newton</span>
+            </div>
+            <span class="username">@SirIsaac</span>
+          </header>
+          <main class="tweet-main">
+            If I have seen further it is by standing on the shoulders of giants.
+          </main>
+          <footer class="tweet-footer">
+            <span>10 days ago</span>
+            <div>
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
