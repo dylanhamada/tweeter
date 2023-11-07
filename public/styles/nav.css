@@ -16,7 +16,7 @@ nav {
   font-size: 2.5em;
 }
 
-.new-tweet {
+.make-new-tweet {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,6 @@ nav {
   font-size: 1.5em;
 }
 
-.new-tweet i {
+.make-new-tweet i {
   color: #f73900;
 }

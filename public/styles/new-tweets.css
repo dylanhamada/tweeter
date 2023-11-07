@@ -17,6 +17,10 @@
   height: 1.75em;
 }
 
+.invalid {
+  color: red;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -29,11 +33,12 @@ form label {
   margin-bottom: 0.5em;
 }
 
-form input {
+form textarea {
   background-color: inherit;
   border: none;
   border-bottom: 4px solid;
   border-color: #545149;
   font-size: 0.7em;
   outline: none;
+  resize: none;
 }
