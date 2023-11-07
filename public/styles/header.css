@@ -1,8 +1,10 @@
 header {
   align-items: center;
+  background-color: rgb(255 188 0);
+  background-image: url("../images/bedge-grunge.png");
   display: flex;
   flex-direction: column;
   height: 520px;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
 }
