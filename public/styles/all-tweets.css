@@ -8,14 +8,25 @@
   border: 4px solid #545149;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
   padding: 15px 7px;
 }
 
 .tweet-header {
-  align-content: center;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 0 5px;
+}
+
+.tweet-header div {
+  display: flex;
+  align-items: center;
+}
+
+.tweet-header img {
+  height: 50px;
+  margin-right: 15px;
 }
 
 .username {
