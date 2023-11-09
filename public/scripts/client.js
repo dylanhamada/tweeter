@@ -122,6 +122,14 @@ $(document).ready(function() {
       .catch(err => console.log(err));
   }
 
+  // toggle the tweet input
+  const toggleInput = function() {
+    $(".make-new-tweet").on("click", function() {
+      $(".new-tweet").slideToggle("slow");
+    });
+  };
+
   loadTweets();
   submitForm();
+  toggleInput();
 });
