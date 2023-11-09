@@ -59,8 +59,15 @@ $(document).ready(function() {
 
   // loop through passed in array and append a new tweet to the page
   const renderTweets = function(tweets) {
-    for (tweet of tweets) {
-      $(".all-tweets").append(createTweetElement(tweet));
+    const $allTweets = $(".all-tweets");
+    // reverse array so newest tweets are first
+    const newestFirstTweets = tweets.toReversed();
+
+    // empty the all-tweets section so the updated tweets can be rendered
+    $allTweets.empty();
+    
+    for (tweet of newestFirstTweets) {
+      $allTweets.append(createTweetElement(tweet));
     }
   }
 
@@ -81,6 +88,7 @@ $(document).ready(function() {
       }
       // if form input is longer than 140 characters, alert user
       if (formData.length > 145) {
+        console.log(formData.length);
         return alert("Tweet is too long. Please shorten it and try again.");
       }
       
@@ -90,7 +98,10 @@ $(document).ready(function() {
         url: "/tweets",
         data: formData
       })
-        .then(data => console.log("Data sent:", data))
+        // if request successful, call loadTweets
+        .then(() => {
+          loadTweets();
+        })
         .catch(err => console.log(err));
     });
   }
