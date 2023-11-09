@@ -3,31 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
 $(document).ready(function() {
-  const data = [{
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1699300570697
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1699386970697
-  }];
-  
   // create a tweet
   const createTweetElement = function(tweetObj) {
     const $tweetArticle = $("<article>");
@@ -48,11 +24,9 @@ $(document).ready(function() {
     const $retweetIcon = $("<i>");
     const $likeIcon = $("<i>");
 
-    // calculate difference in dates
-    const currentDate = new Date();
+    // difference in dates
     const tweetDate = new Date(tweetObj.created_at);
-    const diff = currentDate.getTime() - tweetDate.getTime();
-    const dayDiff = Math.round(diff / (1000 * 60 * 60 * 24));
+    const dayDiff = timeago.format(tweetDate);
 
     // build tweet header
     $profileImg.attr("src", tweetObj.user.avatars);
@@ -69,7 +43,7 @@ $(document).ready(function() {
     $main.append($bodyText);
 
     // build tweet footer
-    $date.text(dayDiff + dayDiff > 1 ? "days" : "day" + "ago");
+    $date.text(dayDiff);
     $reportIcon.addClass("fa-solid fa-flag");
     $retweetIcon.addClass("fa-solid fa-retweet");
     $likeIcon.addClass("fa-solid fa-heart");
@@ -90,6 +64,7 @@ $(document).ready(function() {
     }
   }
 
+  // form submit event handler
   const submitForm = function() {
     const $tweetForm = $("form");
     const $tweetInput = $("#tweet-text");
@@ -111,6 +86,15 @@ $(document).ready(function() {
     });
   }
 
-  renderTweets(data);
+  // load tweets
+  const loadTweets = function() {
+    $.ajax({
+      type: "GET",
+      url: "/tweets",
+    })
+      .then(data => renderTweets(data));
+  }
+
+  loadTweets();
   submitForm();
 });
