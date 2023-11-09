@@ -30,31 +30,28 @@ $(document).ready(function() {
   
   // create a tweet
   const createTweetElement = function(tweetObj) {
-    const $tweetArticle = $(`<article>`);
+    const $tweetArticle = $("<article>");
     
-    const $header = $(`<header>`);
-    const $profileDiv = $(`<div>`);
-    const $profileImg = $(`<img>`);
-    const $profileName = $(`<span>`);
-    const $userName = $(`<span>`);
+    const $header = $("<header>");
+    const $profileDiv = $("<div>");
+    const $profileImg = $("<img>");
+    const $profileName = $("<span>");
+    const $userName = $("<span>");
     
-    const $main = $(`<main>`);
-    const $bodyText = $(`<p>`);
+    const $main = $("<main>");
+    const $bodyText = $("<p>");
     
-    const $footer = $(`<footer>`);
-    const $date = $(`<span>`);
-    const $iconDiv = $(`<div>`);
-    const $reportIcon = $(`<i>`);
-    const $retweetIcon = $(`<i>`);
-    const $likeIcon = $(`<i>`);
+    const $footer = $("<footer>");
+    const $date = $("<span>");
+    const $iconDiv = $("<div>");
+    const $reportIcon = $("<i>");
+    const $retweetIcon = $("<i>");
+    const $likeIcon = $("<i>");
 
     // calculate difference in dates
     const currentDate = new Date();
-    console.log(currentDate);
     const tweetDate = new Date(tweetObj.created_at);
-    console.log(tweetDate);
     const diff = currentDate.getTime() - tweetDate.getTime();
-    console.log(diff);
     const dayDiff = Math.round(diff / (1000 * 60 * 60 * 24));
 
     // build tweet header
@@ -72,7 +69,7 @@ $(document).ready(function() {
     $main.append($bodyText);
 
     // build tweet footer
-    $date.text(`${dayDiff} ${dayDiff > 1 ? "days" : "day"} ago`);
+    $date.text(dayDiff + dayDiff > 1 ? "days" : "day" + "ago");
     $reportIcon.addClass("fa-solid fa-flag");
     $retweetIcon.addClass("fa-solid fa-retweet");
     $likeIcon.addClass("fa-solid fa-heart");
@@ -93,5 +90,27 @@ $(document).ready(function() {
     }
   }
 
+  const submitForm = function() {
+    const $tweetForm = $("form");
+    const $tweetInput = $("#tweet-text");
+
+    // event handler on form submit
+    $tweetForm.on("submit", function(event) {
+      event.preventDefault();
+
+      // get value of textarea
+      const formData = $(this).serialize();
+
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: formData
+      })
+        .then(data => console.log("Data sent:", data))
+        .catch(err => console.log(err));
+    });
+  }
+
   renderTweets(data);
+  submitForm();
 });
