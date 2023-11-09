@@ -67,7 +67,6 @@ $(document).ready(function() {
   // form submit event handler
   const submitForm = function() {
     const $tweetForm = $("form");
-    const $tweetInput = $("#tweet-text");
 
     // event handler on form submit
     $tweetForm.on("submit", function(event) {
@@ -76,6 +75,16 @@ $(document).ready(function() {
       // get value of textarea
       const formData = $(this).serialize();
 
+      // if form is empty, alert user
+      if (formData.length < 6) {
+        return alert("Input is empty. Please enter at least one character.");
+      }
+      // if form input is longer than 140 characters, alert user
+      if (formData.length > 145) {
+        return alert("Tweet is too long. Please shorten it and try again.");
+      }
+      
+      // send POST request to /tweets
       $.ajax({
         type: "POST",
         url: "/tweets",
