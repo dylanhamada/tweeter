@@ -74,7 +74,9 @@ $(document).ready(function() {
   // form submit event handler
   const submitForm = function() {
     const $tweetForm = $("form");
+    const $tweetText = $("#tweet-text");
     const $inputError = $(".input-error");
+    const $counter = $(".counter");
 
     // event handler on form submit
     $tweetForm.on("submit", function(event) {
@@ -106,6 +108,9 @@ $(document).ready(function() {
       })
         // if request successful, call loadTweets
         .then(() => {
+          // reset the textarea and counter
+          $tweetText.val("");
+          $counter.text("140");
           loadTweets();
         })
         .catch(err => console.log(err));
@@ -124,8 +129,11 @@ $(document).ready(function() {
 
   // toggle the tweet input
   const toggleInput = function() {
+    const $tweetText = $("#tweet-text");
+    
     $(".make-new-tweet").on("click", function() {
       $(".new-tweet").slideToggle("slow");
+      $tweetText.trigger("focus");
     });
   };
 

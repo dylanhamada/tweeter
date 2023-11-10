@@ -5,6 +5,8 @@
  */
 html {
   box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 24px;
 }
 
 *,
@@ -14,14 +16,12 @@ html {
 }
 
 /*
- * Global layout stuff
- */
+* Global layout stuff
+*/
 
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
-  font-family: "Source Sans 3", sans-serif;
 }
 
 /*
@@ -29,6 +29,27 @@ body {
  */
 
 .container {
-  margin: 0 auto;
-  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin-top: 50px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  main {
+    float: right;
+    margin-top: 200px;
+    padding: 0 25px;
+    width: 50%;
+  }
 }

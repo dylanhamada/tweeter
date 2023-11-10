@@ -1,7 +1,7 @@
 .all-tweets {
   display: flex;
   flex-direction: column;
-  margin: 50px 0 0 0;
+  margin: 0;
 }
 
 .all-tweets article {
@@ -10,6 +10,10 @@
   flex-direction: column;
   margin-bottom: 50px;
   padding: 15px 7px;
+}
+
+.all-tweets article:hover {
+  box-shadow: -5px 4px 6px 0px #ababab;
 }
 
 .tweet-header {
@@ -39,6 +43,7 @@
   font-weight: 600;
   margin: 30px 0 0 0;
   padding: 0 10px 25px 10px;
+  width: 100%;
 }
 
 .tweet-footer {
@@ -47,6 +52,10 @@
   justify-content: space-between;
   margin: 5px 0 0 0;
   padding: 10px 10px 0 10px;
+}
+
+.tweet-footer i {
+  padding-left: 5px;
 }
 
 .tweet-footer .fa-solid:hover {
