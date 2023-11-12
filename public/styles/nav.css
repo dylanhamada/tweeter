@@ -1,6 +1,5 @@
 nav {
   align-items: flex-end;
-  background-color: #4056a1;
   color: #ffffff;
   display: flex;
   font-size: 16px;
@@ -25,6 +24,26 @@ nav {
   font-size: 24px;
 }
 
+.logo,
+.make-new-tweet {
+  background-color: #4056a1;
+  border-radius: 7px;
+  padding: 10px;
+}
+
 .make-new-tweet i {
   color: #f73900;
+}
+
+@media screen and (min-width: 768px) {
+  nav {
+    background-color: #4056a1;
+  }
+
+  .logo,
+  .make-new-tweet {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
 }
