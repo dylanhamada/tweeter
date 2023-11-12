@@ -84,19 +84,23 @@ $(document).ready(function() {
 
       // get value of textarea
       const formData = $(this).serialize();
+      console.log($tweetText.val().length);
 
       // if form is empty, change text inside input-error div and change its display to flex
-      if (formData.length < 6) {
+      if ($tweetText.val().length < 6) {
+        console.log("Input empty");
         $inputError.text("Input is empty. Please enter at least one character.");
         return $inputError.slideDown();
       }
       // if form input is longer than 140 characters, alert user
-      if (formData.length > 145) {
+      if ($tweetText.val().length > 145) {
+        console.log("Input too long");
         $inputError.text("Tweet is too long. Please shorten it and try again.");
         return $inputError.slideDown();
       }
 
       // if input is valid, slide any error message up and empty the input-error div
+      console.log("Input is correct length");
       $inputError.slideUp();
       $inputError.empty();
       
